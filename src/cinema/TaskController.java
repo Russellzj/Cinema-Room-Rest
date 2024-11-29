@@ -12,6 +12,16 @@ public class TaskController {
     @GetMapping("/start")
     public ResponseEntity<Task> start() {
         return new ResponseEntity(HttpStatus.OK);
+    }
 
+    @GetMapping("/test")
+    public int returnOne() {
+        return 1;
+    }
+
+    @GetMapping(value = "/seats", produces = "application/json")
+    public Theatre getSeats() {
+        Theatre theatre = new Theatre();
+        return theatre;
     }
 }
