@@ -1,5 +1,7 @@
 package cinema;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Seat {
     private int row;
     private int column;
@@ -28,10 +30,12 @@ public class Seat {
         return column;
     }
 
+    @JsonIgnore
     public int getPrice() {
         return price;
     }
 
+    @JsonIgnore
     public boolean isPurchased() {
         return purchased;
     }
