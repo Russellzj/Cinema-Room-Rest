@@ -4,6 +4,7 @@ public class Seat {
     private int row;
     private int column;
     private int price;
+    private boolean purchased = false;
 
     public Seat(int row, int column) {
         this.row = row;
@@ -13,6 +14,10 @@ public class Seat {
         } else {
             price = 8;
         }
+    }
+
+    public void purchase() {
+        purchased = true;
     }
 
     //Getters
@@ -25,5 +30,9 @@ public class Seat {
 
     public int getPrice() {
         return price;
+    }
+
+    public boolean isPurchased() {
+        return purchased;
     }
 }

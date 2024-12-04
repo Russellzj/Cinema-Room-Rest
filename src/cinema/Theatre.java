@@ -14,6 +14,11 @@ public class Theatre {
         }
     }
 
+    public Seat purchaseSeat(int row, int column) {
+        seats[row * columns + column].purchase();
+        return seats[row * columns + column];
+    }
+
     public Seat[] getSeats(){
         return seats;
     }
