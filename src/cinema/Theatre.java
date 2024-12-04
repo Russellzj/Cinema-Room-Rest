@@ -14,9 +14,18 @@ public class Theatre {
         }
     }
 
+    public boolean seatExists(int row, int column){
+        return row <= rows && column <= columns;
+    }
+
+    public Seat getSeat(int row, int column){
+        return seats[(row - 1) * columns + column - 1];
+    }
+
     public Seat purchaseSeat(int row, int column) {
-        seats[row * columns + column].purchase();
-        return seats[row * columns + column];
+
+        seats[(row - 1) * columns + column - 1].purchase();
+        return seats[(row - 1) * columns + column - 1];
     }
 
     public Seat[] getSeats(){
