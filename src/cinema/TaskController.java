@@ -20,16 +20,19 @@ public class TaskController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    //Simple server test
     @GetMapping("/test")
     public int returnOne() {
         return 1;
     }
 
+    //Returns a json of the seats available
     @GetMapping(value = "/seats", produces = "application/json")
     public Theatre getSeats() {
         return theatre;
     }
 
+    //Lets the user purchase a ticket based on its row and column location
     @GetMapping(value = "/purchase")
     public ResponseEntity<Object> getPurchase(
             @RequestParam(name = "row") int row,
