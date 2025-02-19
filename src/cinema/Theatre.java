@@ -36,7 +36,7 @@ public class Theatre {
         Ticket ticket = new Ticket(row, column, seats[seatLocation].getPrice());
         tickets.put(ticketId, ticket);
 
-        Map<String, Object> body= new LinkedHashMap<>();
+        Map<String, Object> body = new LinkedHashMap<>();
         body.put("token", ticketId);
         body.put("ticket", ticket);
         return body;
@@ -46,4 +46,13 @@ public class Theatre {
         return seats;
     }
 
+    public boolean tokenExists(UUID token) {
+        return tickets.containsKey(token);
+    }
+
+    public Ticket getTicket(UUID token) {
+        Ticket ticket = tickets.get(token);
+        tickets.remove(token);
+        return ticket;
+    }
 }

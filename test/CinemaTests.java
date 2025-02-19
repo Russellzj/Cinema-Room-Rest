@@ -49,9 +49,24 @@ public class CinemaTests extends SpringTest {
         return CheckResult.correct();
     }
 
+    CheckResult testEndpointPurchase() {
+        String getRequest = "/purchase?row=" + totalRows + "&" + "column=" + totalCols;
+        HttpResponse response = get(getRequest).send();
+        if (response.getStatusCode() != 200) {
+            return CheckResult.wrong("GET " + getRequest + " should respond with " +
+                    "status code 200, responded: " + response.getStatusCode() + "\n\n" +
+                    "Response body:\n" + response.getContent());
+        }
+        return CheckResult.correct();
+    }
+
+
+
+
     @DynamicTest
     DynamicTesting[] dynamicTests = new DynamicTesting[]{
         this::testEndpoint,
-        this::testEndpointAvailableSeats
+            this::testEndpointAvailableSeats,
+            this::testEndpointPurchase,
     };
 }
