@@ -58,4 +58,15 @@ public class TaskController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "wrong token!");
         }
     }
+
+    @GetMapping(value = "/stats")
+    public ResponseEntity<Object> stats(
+        @RequestParam(name = "password") String password) {
+        if (!password.equals("super_secret")) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "The password is wrong!");
+        }
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).
+                body(theatre.stats());
+    }
+
 }
