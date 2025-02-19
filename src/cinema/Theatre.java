@@ -55,4 +55,22 @@ public class Theatre {
         tickets.remove(token);
         return ticket;
     }
+
+    public Map<String, Object> stats() {
+        int income = 0;
+        int availableSeats = seats.length;
+        int purchasedSeats = 0;
+        for (Seat seat : seats) {
+            if (seat.isPurchased()) {
+                income += seat.getPrice();
+                availableSeats--;
+                purchasedSeats++;
+            }
+        }
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("income", income);
+        body.put("available", availableSeats);
+        body.put("purchased", purchasedSeats);
+        return body;
+    }
 }
